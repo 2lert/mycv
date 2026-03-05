@@ -1,0 +1,170 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+
+    background: url("background.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* طبقة تعتيم عشان النص يبين */
+.overlay {
+    background: rgba(0, 0, 0, 0.6);
+    min-height: 100vh;
+    padding: 50px;
+    color: white;
+}
+
+/* أقسام الصفحة */
+section {
+    min-height: 100vh;
+    padding: 100px 50px;
+}
+#team {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.team-container {
+    display: flex;
+    gap: 80px;
+}
+
+.member {
+    width: 260px;
+    height: 220px;
+    padding: 25px;
+
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 20px;
+
+    color: white;
+    text-decoration: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    position: relative;
+    overflow: hidden;
+    transition: 0.4s ease;
+}
+
+/* الاسم */
+.member .name {
+    position: absolute;
+    transition: 0.4s ease;
+}
+
+/* الوصف */
+.member .desc {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.4s ease;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* عند hover */
+.member:hover .name {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+.member:hover .desc {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.member:hover {
+    transform: scale(1.07);
+}
+/* Hover Effect */
+.member:hover {
+    transform: scale(1.08);
+}
+
+.profile-card {
+    width: 260px;
+    height: 200px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    transition: 0.4s ease;
+}
+
+/* الاسم بالبداية */
+.profile-card .name {
+    position: absolute;
+    transition: 0.3s ease;
+}
+
+/* المحتوى مخفي */
+.card-content {
+    opacity: 0;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    transition: 0.4s ease;
+}
+
+/* صورة افتراضية */
+.avatar {
+    width: 70px;
+    height: 70px;
+    background: #ccc;
+    border-radius: 10px;
+}
+
+/* خطوط البيانات */
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.info p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: white;
+}
+
+.line {
+    height: 10px;
+    background: rgba(255,255,255,0.7);
+    border-radius: 5px;
+}
+
+.long { width: 120px; }
+.medium { width: 90px; }
+.short { width: 60px; }
+
+/* عند hover */
+.profile-card:hover .name {
+    opacity: 0;
+}
+
+.profile-card:hover .card-content {
+    opacity: 1;
+}
+
+.profile-card:hover {
+    transform: scale(1.08);
+}
+
+.profile-card {
+    text-decoration: none;
+}

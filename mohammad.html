@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammad Bakeer | Data Science & AI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Smooth scrolling for navigation links */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            /* Background using your file 6e0f45f1... */
+            background-image: url('Background-mohammad.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* --- Interactive Blurred Top Bar --- */
+        .top-bar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 55px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            box-sizing: border-box;
+            z-index: 1000;
+            transition: all 0.4s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .top-bar:hover {
+            height: 70px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .profile-side {
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-pfp {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-image: url('1.png'); /* Placeholder PFP */
+            background-size: cover;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            margin-right: 12px;
+            transition: 0.4s;
+        }
+
+        .user-name {
+            font-size: 1em;
+            font-weight: 700;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+            font-size: 0.8em;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover { color: #00d2ff; }
+
+        .top-bar:hover .profile-pfp { width: 45px; height: 45px; }
+
+        /* --- Main Content Layout --- */
+        .main-content {
+            padding-top: 130px;
+            display: flex;
+            justify-content: center;
+            padding-bottom: 60px;
+        }
+
+        /* Glassmorphism Container */
+        .container {
+            max-width: 900px;
+            width: 90%;
+            background: rgba(255, 255, 255, 0.12); 
+            backdrop-filter: blur(25px); 
+            -webkit-backdrop-filter: blur(25px);
+            padding: 50px 40px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+            text-align: center;
+        }
+
+        .main-header h1 {
+            font-size: 2em;
+            color: #fff;
+            margin: 0;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-weight: 800;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        .bio-box {
+            background: rgba(255, 255, 255, 0.07);
+            padding: 25px;
+            border-left: 4px solid #00d2ff;
+            margin: 40px 0;
+            font-style: italic;
+            text-align: left;
+            font-size: 1.05em;
+            color: #ddd;
+            line-height: 1.7;
+            border-radius: 0 12px 12px 0;
+        }
+
+        section {
+            scroll-margin-top: 110px;
+            margin-top: 60px;
+        }
+
+        .section-title {
+            font-size: 1.2em;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            padding-bottom: 10px;
+            margin-bottom: 35px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #00d2ff;
+        }
+
+        /* --- Certification Grid --- */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .cert-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: 0.3s;
+        }
+
+        .cert-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
+            border-color: #00d2ff;
+        }
+
+        .cert-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* --- CV Styling --- */
+        .cv-frame {
+            width: 100%;
+            height: 650px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        /* --- Social Media Section (LEFT ALIGNED) --- */
+        .social-list {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Aligned to the left */
+            gap: 20px;
+            padding-left: 10px;
+        }
+
+        .social-item {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(10px); /* Moves right on hover */
+            border-color: #00d2ff;
+        }
+
+        .social-item i {
+            font-size: 1.6em;
+            color: #00d2ff;
+            margin-right: 15px; /* Icon on the left of text */
+        }
+
+        .social-item span {
+            font-size: 1em;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        footer {
+            margin-top: 70px;
+        }
+
+        footer a {
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+            font-size: 0.85em;
+            transition: 0.3s;
+        }
+        
+        footer a:hover { color: #fff; }
+
+      .cv-modal{
+    display: none;
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(6px);
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.cv-box{
+    width: 75%;
+    height: 85%;
+    background: #111;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 0 40px rgba(0,0,0,0.6);
+}
+
+.cv-box iframe{
+    width:100%;
+    height:100%;
+    border:none;
+}
+
+.close-btn{
+    position:absolute;
+    top:15px;
+    right:20px;
+    font-size:22px;
+    color:white;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.close-btn:hover{
+    color:#00d9ff;
+}
+
+.cv-btn{
+    background: linear-gradient(135deg,#00c6ff,#0072ff);
+    border: none;
+    padding: 14px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.cv-btn:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+    background: linear-gradient(135deg,#00eaff,#0099ff);
+}
+
+    </style>
+    
+    
+    <script>
+
+function openCV(){
+    document.getElementById("cvModal").style.display="flex";
+}
+
+function closeCV(){
+    document.getElementById("cvModal").style.display="none";
+}
+
+</script>
+
+
+</head>
+<body>
+
+    <nav class="top-bar">
+        <div class="profile-side">
+            <div class="profile-pfp"></div>
+            <span class="user-name">Mohammad Bakeer</span>
+        </div>
+        
+        <div class="nav-links">
+            <a href="#certificates">Certificates</a>
+            <a href="#cv">Resume</a>
+            <a href="#social">Connect</a>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="container">
+            
+            <header class="main-header">
+                <h1>Data Science & AI</h1>
+            </header>
+
+            <div class="bio-box">
+            "Motivated Data Science & Artificial Intelligence student passionate about machine learning and data-driven problem solving. Focused on developing analytical and technical skills to build intelligent systems and extract meaningful insights from data."
+        </div>
+
+            <section id="certificates">
+                <h2 class="section-title">Verified Certifications</h2>
+                <div class="cert-grid">
+                    <div class="cert-item"><img src="1.png" class="cert-img" alt="Cert 1"></div>
+                    <div class="cert-item"><img src="Background-mohammad.png" class="cert-img" alt="Cert 2"></div>
+                    <div class="cert-item"><img src="1.png" class="cert-img" alt="Cert 3"></div>
+                    <div class="cert-item"><img src="Background-mohammad.png" class="cert-img" alt="Cert 4"></div>
+                    <div class="cert-item"><img src="1.png" class="cert-img" alt="Cert 5"></div>
+                    <div class="cert-item"><img src="Background-mohammad.png" class="cert-img" alt="Cert 6"></div>
+                </div>
+            </section>
+
+           <section id="cv">
+    <h2 class="section-title">Professional Curriculum Vitae</h2>
+
+    <button class="cv-btn" onclick="openCV()">View CV</button>
+</section>
+
+<div id="cvModal" class="cv-modal">
+
+    <div class="cv-box">
+
+        <span class="close-btn" onclick="closeCV()">✖</span>
+
+        <iframe src="Mohammad's CV.pdf"></iframe>
+
+    </div>
+
+</div>
+
+<script>
+function showCV(){
+    document.getElementById("cv-container").style.display = "block";
+}
+</script>
+
+            <section id="social">
+                <h2 class="section-title" style="text-align: left;">Professional Network</h2>
+                <div class="social-list">
+                    <a href="https://github.com/uuxw" class="social-item" target="_blank">
+                        <i class="fab fa-github"></i>
+                        <span>uuxw</span>
+                    </a>
+                    <a href="https://linkedin.com/in/HossamALTaweel" class="social-item" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                        <span>Mohammad Bakeer</span>
+                    </a>
+                    <a href="https://instagram.com/t2th" class="social-item" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                        <span>t2th</span>
+                    </a>
+                </div>
+            </section>
+
+            <footer>
+                <a href="h1.html">← Return to Selection Portal</a>
+            </footer>
+
+        </div>
+    </div>
+
+</body>
+</html>
